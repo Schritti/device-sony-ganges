@@ -13,7 +13,7 @@
 # limitations under the License.
 
 # Platform path
-PLATFORM_COMMON_PATH := device/sony/ganges
+PLATFORM_COMMON_PATH := device/sony/ganges-common
 
 SOMC_PLATFORM := ganges
 SOMC_KERNEL_VERSION := 4.9

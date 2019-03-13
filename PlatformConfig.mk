@@ -13,7 +13,7 @@
 # limitations under the License.
 
 # Platform path
-PLATFORM_COMMON_PATH := device/sony/ganges
+PLATFORM_COMMON_PATH := device/sony/ganges-common
 PRODUCT_PLATFORM_SOD := true
 
 TARGET_BOARD_PLATFORM := sdm660
