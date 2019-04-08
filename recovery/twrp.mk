@@ -9,6 +9,7 @@ TW_MAX_BRIGHTNESS := 255
 TW_DEFAULT_BRIGHTNESS := 255
 TW_NEW_ION_HEAP := true
 TW_BRIGHTNESS_PATH := "/sys/class/backlight/panel0-backlight/brightness"
+# TW_SCREEN_BLANK_ON_BOOT := true
 BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_23x41.h\"
 
@@ -33,6 +34,8 @@ TARGET_NO_SEPARATE_RECOVERY := true
 
 # crypto
 TW_INCLUDE_CRYPTO := true
+TW_INCLUDE_CRYPTO_FBE := true
+TW_INCLUDE_FBE_METADATA_DECRYPT := true
 TW_CRYPTO_FS_TYPE := "ext4"
 TW_CRYPTO_MNT_POINT := "/data"
 TW_CRYPTO_REAL_BLKDEV := "/dev/block/bootdevice/by-name/userdata"
@@ -43,4 +46,8 @@ TW_CRYPTO_KEY_LOC := "footer"
 # init
 PRODUCT_PACKAGES += \
     twrp.fstab \
-    init.recovery.usb
+    prepdecrypt.sh \
+    init.recovery.twrp \
+    init.recovery.usb \
+    init.recovery.keymaster \
+    twrp_manifest

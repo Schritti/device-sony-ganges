@@ -1,0 +1,61 @@
+on fs
+    chmod 0660 /dev/qseecom
+    chown system drmrpc /dev/qseecom
+    chmod 0664 /dev/ion
+    chown system system /dev/ion
+    install_keyring
+
+service qseecomd /sbin/qseecomd
+    disabled
+    user root
+    group root
+    seclabel u:r:recovery:s0
+
+service gatekeeper-1-0 /sbin/android.hardware.gatekeeper@1.0-service-qti
+    user root
+    group root
+    disabled
+    seclabel u:r:recovery:s0
+
+service hwservicemanager /sbin/hwservicemanager
+    user root
+    group root
+    disabled
+    onrestart setprop hwservicemanager.ready false
+    seclabel u:r:recovery:s0
+
+service servicemanager /sbin/servicemanager
+    user root
+    group root readproc
+    disabled
+    seclabel u:r:recovery:s0
+
+service keystore_auth /sbin/keystore_auth
+    oneshot
+    user system
+    group root
+    disabled
+    seclabel u:r:recovery:s0
+
+# keystore is started and stopped on demand by TWRP
+service keystore /sbin/keystore /tmp/misc/keystore
+    user root
+    group root drmrpc readproc
+    disabled
+    seclabel u:r:recovery:s0
+
+on init
+    start hwservicemanager
+    # Run prepdecrypt synchronously to ensure decryption
+    # is possible before mounting partitions.
+    exec u:r:recovery:s0 root root -- /sbin/prepdecrypt.sh
+
+on property:crypto.ready=1
+    start qseecomd
+
+on property:crypto.ready=0
+    stop qseecomd
+    stop gatekeeper-1-0
+    stop servicemanager
+
+import /init.recovery.keymaster.rc
