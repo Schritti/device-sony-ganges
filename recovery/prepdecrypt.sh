@@ -70,7 +70,7 @@ keymaster_version=$(getprop ro.vendor.keymaster.version)
 if [ "v3" = "$keymaster_version" ]; then
 	cp /o/lib64/hw/android.hardware.keymaster@3.0-impl-qti.so /vendor/lib64/hw/
 fi
-cp /v/lib64/hw/bootctrl.sdm845.so /vendor/lib64/hw/
+cp /v/lib64/hw/bootctrl.sdm660.so /vendor/lib64/hw/
 
 relink /o/bin/qseecomd
 relink /o/bin/hw/android.hardware.gatekeeper@1.0-service-qti
