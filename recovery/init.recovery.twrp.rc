@@ -49,6 +49,7 @@ on init
     # Run prepdecrypt synchronously to ensure decryption
     # is possible before mounting partitions.
     exec u:r:recovery:s0 root root -- /sbin/prepdecrypt.sh
+    exec u:r:recovery:s0 root root -- /sbin/preptouch.sh
 
 on property:crypto.ready=1
     start qseecomd
