@@ -26,7 +26,7 @@ if [ -z "$suffix" ]; then
 	suf=$(getprop ro.boot.slot)
 	suffix="_$suf"
 fi
-oempath="/dev/block/bootdevice/by-name/oem_a"
+oempath="/dev/block/bootdevice/by-name/vendor$suffix"
 mkdir /o
 mount -t ext4 -o ro "$oempath" /o
 syspath="/dev/block/bootdevice/by-name/system$suffix"

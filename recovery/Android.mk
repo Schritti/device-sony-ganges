@@ -58,6 +58,18 @@ LOCAL_MODULE_CLASS := ETC
 LOCAL_MODULE_PATH := $(TARGET_RECOVERY_ROOT_OUT)/sbin
 include $(BUILD_PREBUILT)
 
+#preptouch
+include $(CLEAR_VARS)
+LOCAL_MODULE := preptouch.sh
+LOCAL_SRC_FILES := preptouch.sh
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_STEM := preptouch
+LOCAL_MODULE_SUFFIX := .sh
+LOCAL_MODULE_CLASS := ETC
+LOCAL_MODULE_PATH := $(TARGET_RECOVERY_ROOT_OUT)/sbin
+include $(BUILD_PREBUILT)
+
+
 # static manifest for twrp
 # includes only the hals required to get decryption to work
 include $(CLEAR_VARS)
