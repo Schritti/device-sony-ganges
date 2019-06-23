@@ -4,7 +4,7 @@
 
 # user interface
 TW_THEME := portrait_hdpi
-TW_MAX_BRIGHTNESS := 255
+TW_MAX_BRIGHTNESS := 4096
 TW_DEFAULT_BRIGHTNESS := 255
 TW_NEW_ION_HEAP := true
 TW_BRIGHTNESS_PATH := "/sys/class/backlight/panel0-backlight/brightness"
